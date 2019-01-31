@@ -1,3 +1,4 @@
+# Each dog is in one city, makes mutliple strolls and is strolled by multiple dogsitters
 class Dog < ApplicationRecord
   belongs_to :city
   has_many :strolls

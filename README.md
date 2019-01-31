@@ -1,24 +1,41 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Pet RBnB
 
-Things you may want to cover:
+![Ace fucking ventura](https://media.giphy.com/media/FJznB4jaJLckw/giphy.gif)
 
-* Ruby version
+### Instructions
 
-* System dependencies
+Open up yer **terminal** and type down the following **commands** :
 
-* Configuration
+- `bundle install` : Install all dependencies
+- `rails db:migrate` : Migrate the database
+- `rails db:seed` : Populate the database
+- `rails console` : to check if everything works
 
-* Database creation
+### Database structure
 
-* Database initialization
+City:
 
-* How to run the test suite
+| id          | city_name |
+| ----------- | --------- |
+| PRIMARY KEY | STRING    |
 
-* Services (job queues, cache servers, search engines, etc.)
+Stroll:
 
-* Deployment instructions
+| id          | name   | city_id               | dog_id               | dogsitter_id               |
+| ----------- | ------ | --------------------- | -------------------- | -------------------------- |
+| PRIMARY KEY | STRING | FOREIGN KEY (City.id) | FOREIGN KEY (Dog.id) | FOREIGN KEY (Dogsitter.id) |
 
-* ...
+Dog:
+
+| id          | name   | city_id               | dogsitter_id                               |
+| ----------- | ------ | --------------------- | ------------------------------------------ |
+| PRIMARY KEY | STRING | FOREIGN KEY (City.id) | FOREIGN KEY (Dogsitter.id) through strolls | 
+
+
+Dogsitter:
+
+| id          | name   | city_id               | dog_id                               |
+| ----------- | ------ | --------------------- | ------------------------------------ |
+| PRIMARY KEY | STRING | FOREIGN KEY (City.id) | FOREIGN KEY (Dog.id) through strolls |
